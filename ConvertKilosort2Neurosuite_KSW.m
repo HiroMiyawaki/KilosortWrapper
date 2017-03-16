@@ -95,12 +95,13 @@ for groupidx = 1:length(allgroups)
     gidx            = find(rez.ops.kcoords == tgroup);%find all channels in this group
     channellist     = [];
     
-    for ch = 1:length(par.SpkGrps)
-        if ismember(gidx(1),par.SpkGrps(ch).Channels+1)
-            channellist = par.SpkGrps(ch).Channels+1;
-            break
-        end
-    end
+%     for ch = 1:length(par.SpkGrps)
+%         if ismember(gidx(1),par.SpkGrps(ch).Channels+1)
+%             channellist = par.SpkGrps(ch).Channels+1;
+%             break
+%         end
+%     end
+    channellist=rez.ops.chanMap(gidx);
     if isempty(channellist)
         disp(['Cannot find spkgroup for group ' num2str(groupidx) ])
         continue
